@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  custom_nginx:
+    image: nginx:latest
+    ports:
+      - "88:80"
+    volumes:
+      - ./2129_crispy_kitchen:/usr/share/nginx/html
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: crispy_kitchen
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+volumes:
+    db_data: {}  
